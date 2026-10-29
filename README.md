@@ -221,6 +221,24 @@ python3 wiki/server/serve.py wiki/public 8000
 # 浏览器打开 http://localhost:8000
 ```
 
+### Windows 绿色版（exe）
+
+仓库自带打包脚本，生成双击即用的 exe 启动器（内置本地 HTTP 服务并自动打开浏览器）：
+
+```powershell
+# 打包：exe 启动器 + docs 站点目录，输出到 release\史记知识库-Windows\
+powershell -ExecutionPolicy Bypass -File scripts\packaging\build_win_exe.ps1
+
+# 精简版：排除 docs\wiki\history（约省 258 MB，词条历史页不可用）
+powershell -ExecutionPolicy Bypass -File scripts\packaging\build_win_exe.ps1 -Slim
+
+# 不生成 zip，只保留目录
+powershell -ExecutionPolicy Bypass -File scripts\packaging\build_win_exe.ps1 -SkipZip
+```
+
+产物结构为 `史记知识库.exe` + `_internal\` + `docs\`，整个目录拷贝即可分发，目标机器无需安装 Python。
+开发模式下也可直接运行启动器：`python scripts\packaging\shiji_app.py --port 8080`。
+
 ---
 
 ## 核心数据

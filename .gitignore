@@ -98,3 +98,7 @@ wiki/data/
 wiki/logs/wiki-server.log
 .claude/scheduled_tasks.lock
 subprocess
+
+# 打包产物 (PyInstaller)
+release/
+*.spec
